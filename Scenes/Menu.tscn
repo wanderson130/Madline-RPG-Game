@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://sprites/screens/RussoOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sprites/screens/desert.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 55
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -0.799255 ],
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = 226.0
+margin_right = 1019.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 404.0
+margin_top = 109.0
+margin_right = 616.0
+margin_bottom = 265.0
+
+[node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 212.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 1 )
+text = "START"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 83.0
+margin_right = 212.0
+margin_bottom = 156.0
+custom_fonts/font = SubResource( 2 )
+text = "QUIT"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CenterContainer/VBoxContainer"]
+
+[node name="desert" type="Sprite" parent="CenterContainer/VBoxContainer/ParallaxBackground"]
+position = Vector2( 512.611, 301.441 )
+scale = Vector2( 0.800309, 0.835758 )
+texture = ExtResource( 3 )
+
+[node name="desert2" type="Sprite" parent="CenterContainer/VBoxContainer/ParallaxBackground"]
+position = Vector2( 511.287, 300.363 )
+scale = Vector2( 0.794216, 0.83162 )
+texture = ExtResource( 3 )
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

@@ -1,0 +1,302 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://World/DirtTileset.png" type="Texture" id=1]
+[ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
+[ext_resource path="res://World/World Shadow.png" type="Texture" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/TorchA.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Spider.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/LockedDoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/DeskButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Lever.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Collect.gd" type="Script" id=11]
+[ext_resource path="res://Sprites/hDKNlqT.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI_Bar.png" type="Texture" id=13]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.43177
+
+[node name="World" type="YSort"]
+
+[node name="DirtTileset" type="Sprite" parent="."]
+position = Vector2( 512.769, 300.944 )
+scale = Vector2( 0.851094, 0.83252 )
+texture = ExtResource( 1 )
+
+[node name="CliffTileset" type="Sprite" parent="."]
+position = Vector2( 513.673, 300.461 )
+scale = Vector2( 0.851094, 0.839577 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CliffTileset"]
+position = Vector2( -602.064, -357.872 )
+scale = Vector2( 1.17496, 1.19108 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CliffTileset/StaticBody2D"]
+polygon = PoolVector2Array( 24, 496, 352, 488, 352, 592, 448, 592, 448, 488, 512, 488, 510.569, 437.407, 560.516, 437.407, 560, 424, 600, 424, 683.004, 424.325, 682.409, 436.217, 731.167, 437.407, 730.572, 489.137, 816, 488, 816, 584, 1000, 584, 1001.5, 447.215, 935.473, 449.278, 936, 360, 1024, 360, 1024, 600, 0, 600, 0, 0, 1024, 0, 1024, 280, 936, 280, 936, 176, 1000, 176, 1000.97, 0.0313109, 916.239, 0.00012207, 913.999, 128.017, 808, 128, 808, 96, 784, 96, 782.729, 121.086, 727.292, 120.337, 728, 96, 640, 96, 641.889, 152.551, 544.499, 151.801, 544, 96, 472, 96, 472, 224, 776, 224, 776, 184, 792, 184, 792, 200, 791.61, 305.328, 480.593, 307.33, 460.57, 307.33, 460.57, 343.37, 335.763, 344.705, 336, 328, 304, 328, 304.394, 356.051, 255.005, 355.384, 256, 328, 208, 328, 205.466, 404.291, 136.054, 404.291, 136, 368, 180.202, 366.781, 178.628, 225.798, 456.275, 222.461, 456, 96, 360, 96, 360, 120, 400, 120, 399.697, 160.451, 345.636, 160.451, 344, 128, 312, 128, 310.274, 97.4047, 272.719, 98.5308, 272, 128, 224, 128, 223.583, 98.5308, 18.8457, 101.051, 16, 184, 64, 184, 65.9873, 221.186, 21.9376, 221.853 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="CliffTileset/StaticBody2D"]
+position = Vector2( 776.359, 224.893 )
+scale = Vector2( 0.198204, 0.596549 )
+polygon = PoolVector2Array( 877.385, 496.057, 879.688, 535.462, 1023.52, 535.462, 1031.68, 516.226, 1028.68, 495.295, 944.341, 496.071 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="CliffTileset/StaticBody2D"]
+position = Vector2( 653.898, -708.034 )
+scale = Vector2( 0.298772, 1.444 )
+polygon = PoolVector2Array( 876.655, 490.739, 875.678, 557.092, 1030.86, 557.664, 1034.62, 516.16, 1038.38, 490.739, 939.341, 490.48 )
+
+[node name="World Shadow" type="Sprite" parent="."]
+position = Vector2( 510.468, 301.121 )
+scale = Vector2( 0.842604, 0.831877 )
+z_index = 5
+texture = ExtResource( 3 )
+
+[node name="Torch" parent="." instance=ExtResource( 5 )]
+position = Vector2( 292, 240 )
+scale = Vector2( 0.5625, 0.375 )
+z_index = 2
+frame = 3
+
+[node name="Torch2" parent="Torch" instance=ExtResource( 5 )]
+position = Vector2( 732.444, -21.3333 )
+scale = Vector2( 1, 1 )
+z_index = 2
+frame = 3
+
+[node name="Torch3" parent="Torch" instance=ExtResource( 5 )]
+position = Vector2( 736, -613.333 )
+scale = Vector2( 1.05555, 1.125 )
+z_index = 2
+frame = 3
+
+[node name="Torch4" parent="Torch" instance=ExtResource( 5 )]
+position = Vector2( 1232, -618.667 )
+scale = Vector2( 1.05555, 1.125 )
+z_index = 2
+frame = 2
+
+[node name="Spider" parent="." instance=ExtResource( 6 )]
+position = Vector2( 288, 152 )
+z_index = 2
+
+[node name="Spider2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 408, 200 )
+z_index = 2
+
+[node name="Spider3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 512, 120 )
+z_index = 2
+
+[node name="DeskButton" parent="." instance=ExtResource( 8 )]
+modulate = Color( 0.635294, 0.0705882, 0.0705882, 1 )
+position = Vector2( 912.622, 533.948 )
+scale = Vector2( 1.02131, 1.00749 )
+z_index = 1
+
+[node name="Lever" parent="." instance=ExtResource( 9 )]
+modulate = Color( 0.713726, 0.568627, 0.411765, 1 )
+position = Vector2( 912.769, 511.369 )
+z_index = 2
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 406.429, 459.711 )
+z_index = 2
+
+[node name="KinematicBody2D2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 944.202, 306.728 )
+
+[node name="KinematicBody2D" parent="KinematicBody2D2" instance=ExtResource( 7 )]
+position = Vector2( -373.878, 66 )
+scale = Vector2( 1, 1 )
+
+[node name="Collectable" type="Node2D" parent="."]
+
+[node name="Skull" type="Area2D" parent="Collectable"]
+position = Vector2( 518.605, 347.131 )
+scale = Vector2( 2, 2 )
+z_index = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable/Skull"]
+position = Vector2( -9.52441, -9.12756 )
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Collectable/Skull"]
+position = Vector2( -9.55322, -9.44409 )
+scale = Vector2( 0.0578928, 0.0567755 )
+z_index = 2
+texture = ExtResource( 12 )
+
+[node name="MediumShadow" type="Sprite" parent="Collectable/Skull"]
+position = Vector2( -9.55486, -6.0063 )
+scale = Vector2( 0.522952, 0.442429 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="Skull2" type="Area2D" parent="Collectable"]
+position = Vector2( 249.518, 177.606 )
+scale = Vector2( 2, 2 )
+z_index = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable/Skull2"]
+position = Vector2( -9.52441, -9.12756 )
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Collectable/Skull2"]
+position = Vector2( -9.55322, -9.44409 )
+scale = Vector2( 0.0578928, 0.0567755 )
+z_index = 2
+texture = ExtResource( 12 )
+
+[node name="MediumShadow" type="Sprite" parent="Collectable/Skull2"]
+position = Vector2( -9.55486, -6.0063 )
+scale = Vector2( 0.522952, 0.442429 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="Skull3" type="Area2D" parent="Collectable"]
+position = Vector2( 540.035, 186.803 )
+scale = Vector2( 2, 2 )
+z_index = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable/Skull3"]
+position = Vector2( -9.52441, -9.12756 )
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Collectable/Skull3"]
+position = Vector2( -9.55322, -9.44409 )
+scale = Vector2( 0.0578928, 0.0567755 )
+z_index = 2
+texture = ExtResource( 12 )
+
+[node name="MediumShadow" type="Sprite" parent="Collectable/Skull3"]
+position = Vector2( -9.55486, -6.0063 )
+scale = Vector2( 0.522952, 0.442429 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="Skull4" type="Area2D" parent="Collectable"]
+position = Vector2( 869.445, 563.782 )
+scale = Vector2( 2, 2 )
+z_index = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable/Skull4"]
+position = Vector2( -9.52441, -9.12756 )
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Collectable/Skull4"]
+position = Vector2( -9.55322, -9.44409 )
+scale = Vector2( 0.0578928, 0.0567755 )
+z_index = 2
+texture = ExtResource( 12 )
+
+[node name="MediumShadow" type="Sprite" parent="Collectable/Skull4"]
+position = Vector2( -9.55486, -6.0063 )
+scale = Vector2( 0.522952, 0.442429 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="Skull5" type="Area2D" parent="Collectable"]
+position = Vector2( 1003.63, 30.8353 )
+scale = Vector2( 2, 2 )
+z_index = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable/Skull5"]
+position = Vector2( -9.52441, -9.12756 )
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Collectable/Skull5"]
+position = Vector2( -9.55322, -9.44409 )
+scale = Vector2( 0.0578928, 0.0567755 )
+z_index = 2
+texture = ExtResource( 12 )
+
+[node name="MediumShadow" type="Sprite" parent="Collectable/Skull5"]
+position = Vector2( -9.55486, -6.0063 )
+scale = Vector2( 0.522952, 0.442429 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="Score Counter" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="Score Counter"]
+
+[node name="Base" type="Control" parent="Score Counter/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Score Counter/UI/Base"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 957.022
+margin_top = 6.82016
+margin_right = 1015.02
+margin_bottom = 135.82
+visible_characters = 5
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Score Counter/UI/Base"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 965.146
+margin_top = 7.26487
+margin_right = 983.146
+margin_bottom = 136.265
+text = "/4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skull Iccon" type="Sprite" parent="."]
+position = Vector2( 984.762, 11.9245 )
+scale = Vector2( 0.118386, 0.1147 )
+z_index = 5
+texture = ExtResource( 12 )
+
+[node name="UI_Bar" type="Sprite" parent="Skull Iccon"]
+position = Vector2( 205.081, 7.36062 )
+scale = Vector2( 3.35954, 3.52855 )
+texture = ExtResource( 13 )
+[connection signal="body_entered" from="Collectable/Skull" to="Player" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull" to="Collectable/Skull" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull2" to="Player" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull2" to="Collectable/Skull2" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull3" to="Player" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull3" to="Collectable/Skull3" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull4" to="Player" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull4" to="Collectable/Skull4" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull5" to="Player" method="_on_Skull_body_entered"]
+[connection signal="body_entered" from="Collectable/Skull5" to="Collectable/Skull5" method="_on_Skull_body_entered"]
